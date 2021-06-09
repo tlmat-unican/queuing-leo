@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=0.6,transform shape,state/.style={draw,circle,thick,minimum width=0.8cm,inner sep=0pt}]
+
+\node[draw,minimum width=1.2cm, minimum height=1.2cm] (s) at (0,0) {Src};
+\node[circle, draw, minimum width=1.2cm, above right = 3em and 15em of s] (s1) {S$_1$};
+\node[circle, draw, minimum width=1.2cm, below right = 3em and 10em of s] (s2) {S$_2$};
+\node[circle, draw, minimum width=1.2cm, below right = 3em and 20em of s] (s3) {S$_3$};
+\node[circle, draw, minimum width=1.2cm, right = 30em of s] (d) {Dst};
+
+
+\draw[->] (s) -- node [above, rotate=15] {$\delta=3$} (s1) ;
+\draw[->] (s) -- node [above, rotate=-20] {$\delta=2$} (s2);
+\draw[->] (s2) -- node [above ] {$\delta=2$} (s3);
+\draw[->] (s3) -- node [above, rotate=25] {$\delta=2$} (d);
+\draw[->] (s1) -- node [above, rotate=-15 ] {$\delta=3$} (d);
+
+\draw [color1, thick, double, dashdotted, opacity=0.7] [out=30]([]s) 
+to [in=-150]([yshift=-1em]s1)
+to [in=-170]([yshift=0.5em]d);
+
+\draw [color2!70!black, thick, double, dashdotted, opacity=0.7] [out=-20]([]s) 
+to []([]s2)
+to []([]s3)
+to [in=-170]([yshift=-0.5em]d);
+
+\node[ above right = -1.5em and 1em of s1, color1!80!black](){\Large P$_1$};
+\node[ above left  = -1.5em and 1em of s2, color2!60!black](){\Large P$_2$};
+ 
+\end{tikzpicture}

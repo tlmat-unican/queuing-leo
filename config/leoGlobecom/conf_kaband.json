@@ -1,0 +1,43 @@
+{
+  "Topology": {
+    "NumNodes": 2,
+    "ForwardRules": {
+      "Flow1": [
+        [0, 1],
+        [1, 0]
+      ]
+    },
+    "DefaultNode": {
+      "Dist": "EXP",
+      "QueueSize": -1,
+      "Type": "MM1",
+      "Param": 1
+    },
+    "LinksDelay": [
+      [0, 0],
+      [0, 0]
+    ],
+    "RulesSensitivity": 0.1,
+    "Node1": {
+      "QueueSize": -1,
+      "Type": "ML2",
+      "Service": { "Dist": "EXP", "Param": [1,1,1] },
+      "Regime": {
+        "Dist": "EXP",
+        "Prob": [
+          [0.0, 0.93156, 0.068437],
+          [0.34526, 0.0, 0.65474],
+          [0.070012, 0.92999, 0.0]
+        ],
+        "Param": [0.003952, 0.00137, 0.005999]
+      }
+    }
+  },
+  "Simulation": {
+    "NumFlows": 1,
+    "DefaultFlow": { "Dist": "EXP", "Param": 0.05, "MaxPackets": -1 },
+    "Type": "TRAFFIC_LIMITED",
+    "MaxSimulTime": 100
+  },
+  "Results": {}
+}

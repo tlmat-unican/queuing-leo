@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+def build(ctx):
+    other_modules = ['utils']
+
+    src = ['*.cpp']
+    inc = ['../include']
+    tgt = ctx.path.relpath()
+
+    if ctx.options.mode == 'debug':
+        log_define = ['LOG_ENABLED']
+    else:
+        log_define = []
+
+    ctx(
+        features='cxx',
+        target='src',
+        use=other_modules,
+        source=ctx.path.ant_glob(src),
+        includes=inc,
+        export_includes=inc,
+        defines=log_define
+    )

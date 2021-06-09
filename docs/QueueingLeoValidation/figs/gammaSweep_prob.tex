@@ -1,0 +1,48 @@
+% !TeX encoding=utf8
+% !TeX spellcheck = en-US
+
+	\begin{tikzpicture}[
+font=\small,
+every axis/.style={ % add these settings to all the axis environments in the tikzpicture
+	scale only axis, 
+	width=0.65\columnwidth,
+	height=0.25\columnwidth,	
+	ymin=40,
+	ymax=150,
+	xmin=1,
+	xmax=10,	
+	ymajorgrids=true,
+	ylabel={Time},
+	xlabel={S$_1$ $\gamma$},
+	legend entries={0\%, 20\%, 40\%, 60\%, 80\%, 100\%},
+	legend style={ cells = {anchor=west}, at= {(0.2, 0.5)}, anchor = south, draw=none, fill=none, legend columns=2}
+}]
+
+\pgfplotstableread{figs/data/gammaSweep_prob000.dat}\dataA
+\pgfplotstableread{figs/data/gammaSweep_prob020.dat}\dataB
+\pgfplotstableread{figs/data/gammaSweep_prob040.dat}\dataC
+\pgfplotstableread{figs/data/gammaSweep_prob060.dat}\dataD
+\pgfplotstableread{figs/data/gammaSweep_prob080.dat}\dataE
+\pgfplotstableread{figs/data/gammaSweep_prob100.dat}\dataF
+
+\pgfplotstableread{figs/data/fig2a.dat}\dataO
+
+\begin{axis}[]
+	\addplot[thick, color1] table[x index=0,y index=1] from \dataA;
+	\addplot[thick, color2] table[x index=0,y index=1] from \dataB;
+	\addplot[thick, color3] table[x index=0,y index=1] from \dataC;
+	\addplot[thick, color4] table[x index=0,y index=1] from \dataD;
+	\addplot[thick, color5] table[x index=0,y index=1] from \dataE;
+	\addplot[thick, color1!50!black] table[x index=0,y index=1] from \dataF;		
+	
+	\addplot[thick, color1, dashed] table[x index=0,y index=1] from \dataO;
+	\addplot[thick, color2, dashed] table[x index=0,y index=2] from \dataO;
+	\addplot[thick, color3, dashed] table[x index=0,y index=3] from \dataO;
+	\addplot[thick, color4, dashed] table[x index=0,y index=4] from \dataO;
+	\addplot[thick, color5, dashed] table[x index=0,y index=5] from \dataO;
+	\addplot[thick, color1!50!black, dashed] table[x index=0,y index=6] from \dataO;		
+\end{axis}
+
+
+
+\end{tikzpicture}
